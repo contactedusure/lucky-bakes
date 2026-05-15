@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucky Bakes — Hi, I'm Lucky!</title>
+<meta name="description" content="Hi! I'm Lucky, an 11-year-old baker from Bengaluru. Everything I make is from scratch — even the Biscoff spread. Welcome to Lucky Bakes.">
+<meta property="og:title" content="Lucky Bakes — Hi, I'm Lucky!">
+<meta property="og:description" content="11-year-old baker. Everything from scratch. Even the Biscoff spread.">
+<meta property="og:image" content="photos/lucky-chef-hero.jpg">
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍰</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --brown: #3a2418;
+  --brown-soft: #6b4423;
+  --gold: #c9a961;
+  --gold-warm: #8b5a2b;
+  --cream: #faf3e7;
+  --cream-deep: #f0e3cc;
+  --red: #b85450;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background: var(--cream);
+  color: var(--brown);
+  font-size: 19px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* === NAV === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(250, 243, 231, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(139, 90, 43, 0.15);
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: var(--brown);
+  text-decoration: none;
+}
+nav .brand em { color: var(--gold-warm); font-style: italic; }
+nav .nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+nav .nav-links a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  color: var(--brown-soft);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+nav .nav-links a:hover { color: var(--gold-warm); }
+nav .nav-links a.cta {
+  background: var(--brown);
+  color: var(--cream);
+  padding: 8px 18px;
+  border-radius: 24px;
+}
+nav .nav-links a.cta:hover { background: var(--gold-warm); color: white; }
+.menu-toggle { display: none; }
+
+/* === HERO === */
+.hero {
+  min-height: 100vh;
+  padding: 100px 24px 60px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 100px;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212, 165, 116, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+.hero-text .greeting {
+  font-family: 'Caveat', cursive;
+  font-size: 42px;
+  color: var(--gold-warm);
+  margin-bottom: 8px;
+  display: inline-block;
+  animation: fadeUp 0.8s ease-out;
+}
+.hero-text h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(54px, 7vw, 96px);
+  line-height: 1;
+  color: var(--brown);
+  margin-bottom: 24px;
+  letter-spacing: -2px;
+  animation: fadeUp 0.8s ease-out 0.1s both;
+}
+.hero-text h1 em { color: var(--gold-warm); font-style: italic; }
+.hero-text .age-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 24px;
+  color: var(--brown-soft);
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s ease-out 0.2s both;
+}
+.hero-text .intro-p {
+  font-size: 21px;
+  line-height: 1.65;
+  color: var(--brown);
+  margin-bottom: 18px;
+  animation: fadeUp 0.8s ease-out 0.3s both;
+}
+.hero-text .signature {
+  margin-top: 32px;
+  animation: fadeUp 0.8s ease-out 0.5s both;
+}
+.hero-text .signature-line {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: var(--brown-soft);
+}
+.hero-text .signature-name {
+  font-family: 'Caveat', cursive;
+  font-size: 56px;
+  color: var(--gold-warm);
+  line-height: 1;
+}
+
+.hero-image {
+  position: relative;
+  animation: fadeUp 1s ease-out 0.4s both;
+}
+.hero-image img {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow:
+    0 30px 60px -20px rgba(58, 36, 24, 0.35),
+    0 0 0 8px white,
+    0 0 0 9px rgba(201, 169, 97, 0.4);
+  transform: rotate(2deg);
+}
+.hero-image .photo-tag {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  background: var(--cream);
+  padding: 8px 22px;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: var(--gold-warm);
+  border: 1px dashed var(--gold);
+  border-radius: 24px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === SCROLL REVEAL === */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* === SECTIONS === */
+section {
+  padding: 80px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-label {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  color: var(--gold);
+  text-align: center;
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(40px, 5vw, 60px);
+  text-align: center;
+  color: var(--brown);
+  margin-bottom: 60px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+.section-title em { color: var(--gold-warm); font-style: italic; }
+
+/* === STORY === */
+.story {
+  background: linear-gradient(180deg, transparent 0%, rgba(240, 227, 204, 0.4) 50%, transparent 100%);
+  max-width: none;
+  padding: 100px 24px;
+}
+.story-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+  margin-top: 40px;
+}
+.story-text p {
+  margin-bottom: 22px;
+  font-size: 20px;
+  line-height: 1.7;
+}
+.story-text p:first-child::first-letter {
+  font-family: 'DM Serif Display', serif;
+  font-size: 64px;
+  float: left;
+  line-height: 1;
+  color: var(--gold-warm);
+  padding-right: 8px;
+  padding-top: 4px;
+}
+.story-text strong {
+  color: var(--gold-warm);
+  font-weight: 600;
+}
+.story-photos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.story-photos figure {
+  position: relative;
+}
+.story-photos img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px -10px rgba(58, 36, 24, 0.3);
+  display: block;
+}
+.story-photos figure:nth-child(odd) img { transform: rotate(-1.5deg); }
+.story-photos figure:nth-child(even) img { transform: rotate(1.5deg); }
+.story-photos figcaption {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: var(--gold-warm);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* === WHAT MAKES ME DIFFERENT === */
+.different {
+  background: var(--brown);
+  color: var(--cream);
+  max-width: none;
+  padding: 100px 24px;
+}
+.different .section-label { color: var(--gold); }
+.different .section-title { color: var(--cream); }
+.different .section-title em { color: var(--gold); }
+.different-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.different-card {
+  text-align: center;
+  padding: 20px;
+}
+.different-card .icon {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+.different-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--gold);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+.different-card p {
+  font-size: 18px;
+  color: var(--cream);
+  line-height: 1.6;
+}
+
+/* === GALLERY === */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  box-shadow: 0 12px 24px -8px rgba(58, 36, 24, 0.25);
+  transition: transform 0.4s ease;
+}
+.gallery-item:hover { transform: translateY(-6px); }
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-item .label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 18px 16px;
+  background: linear-gradient(transparent, rgba(58, 36, 24, 0.85));
+  color: var(--cream);
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+}
+
+/* === EVENT === */
+.event-section {
+  background: linear-gradient(135deg, rgba(201, 169, 97, 0.15) 0%, rgba(184, 84, 80, 0.1) 100%);
+  max-width: none;
+  padding: 80px 24px;
+}
+.event-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--cream);
+  border: 2px solid var(--gold);
+  border-radius: 16px;
+  padding: 50px 40px;
+  text-align: center;
+  position: relative;
+}
+.event-card::before, .event-card::after {
+  content: '✦';
+  position: absolute;
+  top: -16px;
+  font-size: 28px;
+  color: var(--gold);
+  background: var(--cream);
+  padding: 0 10px;
+}
+.event-card::before { left: 40px; }
+.event-card::after { right: 40px; }
+.event-badge {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+.event-card h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 44px;
+  color: var(--brown);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+.event-card .when {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  color: var(--gold-warm);
+  margin-bottom: 8px;
+}
+.event-card .where {
+  font-style: italic;
+  font-size: 20px;
+  color: var(--brown-soft);
+  margin-bottom: 24px;
+}
+.event-card .menu-quick {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  margin-bottom: 20px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--brown);
+}
+.event-card .menu-quick span { white-space: nowrap; }
+.event-card .menu-quick .price { color: var(--gold-warm); }
+
+/* === CUSTOM ORDERS === */
+.orders-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 50px;
+  font-size: 20px;
+  color: var(--brown-soft);
+  font-style: italic;
+}
+.orders-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.orders-col h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: var(--gold-warm);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--gold);
+  letter-spacing: 1px;
+}
+.orders-col ul {
+  list-style: none;
+}
+.orders-col li {
+  padding: 8px 0;
+  font-size: 19px;
+  color: var(--brown);
+  position: relative;
+  padding-left: 24px;
+}
+.orders-col li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  color: var(--gold);
+  font-size: 14px;
+}
+.weekend-note {
+  margin-top: 50px;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  color: var(--gold-warm);
+}
+.weekend-note strong {
+  background: var(--gold);
+  color: white;
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+/* === CONTACT === */
+.contact-section {
+  background: var(--brown);
+  color: var(--cream);
+  max-width: none;
+  padding: 100px 24px;
+  text-align: center;
+}
+.contact-section .section-label { color: var(--gold); }
+.contact-section .section-title { color: var(--cream); }
+.contact-section .section-title em { color: var(--gold); }
+.contact-intro {
+  font-size: 22px;
+  color: var(--cream);
+  max-width: 600px;
+  margin: 0 auto 50px;
+  line-height: 1.6;
+}
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 32px;
+  background: var(--gold);
+  color: var(--brown);
+  text-decoration: none;
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  border-radius: 30px;
+  letter-spacing: 1px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  border: none;
+}
+.contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.4);
+}
+.contact-btn.secondary {
+  background: transparent;
+  color: var(--gold);
+  border: 2px solid var(--gold);
+}
+.contact-btn.secondary:hover {
+  background: var(--gold);
+  color: var(--brown);
+}
+.phone-line {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  color: var(--gold);
+  margin-top: 30px;
+}
+.phone-line a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--gold);
+}
+
+/* === QR PLACEHOLDER === */
+#qr-placeholder {
+  margin: 48px auto 0;
+  width: 160px;
+  height: 160px;
+  border: 2px dashed rgba(201, 169, 97, 0.5);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  color: rgba(201, 169, 97, 0.6);
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  text-align: center;
+  padding: 16px;
+}
+#qr-placeholder .qr-icon {
+  font-size: 40px;
+  opacity: 0.5;
+}
+
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 40px 24px;
+  background: var(--cream-deep);
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: var(--gold-warm);
+}
+footer .heart { color: var(--red); }
+
+/* === LIGHTBOX === */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(58, 36, 24, 0.95);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  cursor: pointer;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: var(--cream);
+  font-size: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 90px;
+    text-align: center;
+  }
+  .hero-image { order: -1; }
+  .hero-image img { max-width: 320px; transform: rotate(0); }
+  .story-grid { grid-template-columns: 1fr; gap: 30px; }
+  .orders-grid { grid-template-columns: 1fr; gap: 30px; }
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--brown);
+    cursor: pointer;
+  }
+  nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    flex-direction: column;
+    padding: 20px;
+    gap: 16px;
+    border-bottom: 1px solid var(--gold);
+  }
+  nav .nav-links.open { display: flex; }
+  .event-card { padding: 35px 24px; }
+  .event-card h2 { font-size: 32px; }
+  section { padding: 60px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#top" class="brand"><em>Lucky</em> Bakes</a>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  <div class="nav-links">
+    <a href="#story">My Story</a>
+    <a href="#different">What's Different</a>
+    <a href="#gallery">My Bakes</a>
+    <a href="#orders">Order</a>
+    <a href="#contact" class="cta">Get in Touch</a>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-text">
+    <div class="greeting">~ hi there ~</div>
+    <h1>I'm <em>Lucky</em>.<br>I bake.</h1>
+    <div class="age-line">11 years old · Inventure Academy, Bengaluru</div>
+    <p class="intro-p">
+      Most kids my age want to play on weekends. I want to bake.
+    </p>
+    <p class="intro-p">
+      Cheesecakes, brownies, cookies, breads, pizzas — all from scratch. Even the Biscoff spread. Even the cream cheese. Even the hibiscus lemonade (made with real organic flowers, not syrup).
+    </p>
+    <p class="intro-p">
+      Welcome to <strong style="color: var(--gold-warm);">Lucky Bakes</strong>. ✨
+    </p>
+    <div class="signature">
+      <div class="signature-line">— with love,</div>
+      <div class="signature-name">Lucky</div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="photos/lucky-chef-hero.jpg" alt="Lucky in his chef hat and apron">
+    <div class="photo-tag">that's me!</div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="story-inner">
+    <div class="section-label reveal">~ my story ~</div>
+    <h2 class="section-title reveal">How <em>Lucky Bakes</em> began</h2>
+
+    <div class="story-grid">
+      <div class="story-text reveal">
+        <p>
+          My real name is <strong>Lakshyya</strong>, but everyone calls me <strong>Lucky</strong>. I'm 11, I go to <strong>Inventure Academy</strong> in Bengaluru, and I live at <strong>Phoenix One Bangalore West</strong>.
+        </p>
+        <p>
+          I started baking when I was really young — I just loved watching how flour, butter, and sugar could turn into something magical in the oven.
+        </p>
+        <p>
+          I love sports too — <strong>football, cricket, table tennis</strong> — and being outdoors. But when the weekend comes, I'm not thinking about playgrounds. I'm thinking: <em>what am I going to bake this weekend?</em>
+        </p>
+        <p>
+          I've put up stalls at <strong>my school</strong> (Inventure Academy) and at <strong>my apartment complex</strong> (Phoenix One Bangalore West). Each one teaches me something new. Each one makes me better.
+        </p>
+        <p>
+          One day, I want to go to <strong>French bakery school</strong> and become a world-class baker. ✨ This is just the beginning.
+        </p>
+      </div>
+      <div class="story-photos reveal reveal-delay-2">
+        <figure>
+          <img src="photos/lucky-cake.jpg" alt="Lucky with a homemade cake">
+          <figcaption>fresh out of the oven</figcaption>
+        </figure>
+        <figure>
+          <img src="photos/lucky-bread.jpg" alt="Lucky with Japanese milk bread">
+          <figcaption>my Japanese milk bread</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="different" id="different">
+  <div class="section-label reveal">~ why we're different ~</div>
+  <h2 class="section-title reveal">Everything from <em>scratch</em></h2>
+
+  <div class="different-grid">
+    <div class="different-card reveal reveal-delay-1">
+      <div class="icon">🍯</div>
+      <h3>Biscoff spread</h3>
+      <p>I don't buy it. I make it. From real biscuits, blended at home until it's silky.</p>
+    </div>
+    <div class="different-card reveal reveal-delay-2">
+      <div class="icon">🧀</div>
+      <h3>Real cream cheese</h3>
+      <p>The cream cheese in my cheesecake? Made at home. Tastes nothing like the store stuff.</p>
+    </div>
+    <div class="different-card reveal reveal-delay-3">
+      <div class="icon">🌺</div>
+      <h3>Real hibiscus flowers</h3>
+      <p>Organically sourced. Not a syrup. Steeped fresh, with real lemon and real mint.</p>
+    </div>
+    <div class="different-card reveal reveal-delay-4">
+      <div class="icon">🍫</div>
+      <h3>Homemade chocolate syrup</h3>
+      <p>For drizzles, for brownies, for everything. Made from real dark chocolate.</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-label reveal">~ my bakes ~</div>
+  <h2 class="section-title reveal">A peek inside <em>my kitchen</em></h2>
+
+  <div class="gallery-grid">
+    <div class="gallery-item reveal reveal-delay-1" onclick="openLightbox('photos/lucky-biscoff-cheesecake.jpg')">
+      <img src="photos/lucky-biscoff-cheesecake.jpg" alt="Heart-shaped Biscoff cheesecake">
+      <div class="label">Biscoff Cheesecake</div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2" onclick="openLightbox('photos/lucky-brownies.jpg')">
+      <img src="photos/lucky-brownies.jpg" alt="Tray of chocolate brownies">
+      <div class="label">Chocolate Brownies</div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-3" onclick="openLightbox('photos/lucky-bread.jpg')">
+      <img src="photos/lucky-bread.jpg" alt="Japanese milk bread fresh from the oven">
+      <div class="label">Japanese Milk Bread</div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-4" onclick="openLightbox('photos/lucky-burger-buns.jpg')">
+      <img src="photos/lucky-burger-buns.jpg" alt="Tray of sesame burger buns">
+      <div class="label">Burger Buns</div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1" onclick="openLightbox('photos/lucky-pizza.jpg')">
+      <img src="photos/lucky-pizza.jpg" alt="Homemade pizza with basil">
+      <div class="label">Pizza</div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2" onclick="openLightbox('photos/lucky-strawberry-dessert.jpg')">
+      <img src="photos/lucky-strawberry-dessert.jpg" alt="Strawberry dessert">
+      <div class="label">Strawberry Tart</div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-3" onclick="openLightbox('photos/lucky-cake.jpg')">
+      <img src="photos/lucky-cake.jpg" alt="Homemade cake">
+      <div class="label">Vanilla Cake</div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-4" onclick="openLightbox('photos/lucky-chef-hero.jpg')">
+      <img src="photos/lucky-chef-hero.jpg" alt="Lucky in chef's apron">
+      <div class="label">Behind the Bakes</div>
+    </div>
+  </div>
+</section>
+
+<section class="event-section" id="event">
+  <div class="event-card reveal">
+    <div class="event-badge">UPCOMING POP-UP</div>
+    <h2>Catch me at the<br>CSE × Merchants of Happiness<br>Community Day</h2>
+    <div class="when">Saturday, 16 May 2026 · 3 PM – 7 PM</div>
+    <div class="where">Padukone–Dravid Centre for Sports Excellence, Bengaluru</div>
+
+    <div class="menu-quick">
+      <span>🍰 Biscoff Cheesecake <span class="price">₹249</span></span>
+      <span>🍫 Brownie <span class="price">₹99</span></span>
+      <span>🍪 Choco Chunk Cookie <span class="price">₹59</span></span>
+      <span>🍋 Hibiscus Lemonade <span class="price">₹50</span></span>
+    </div>
+
+    <p style="font-family: 'Caveat', cursive; font-size: 24px; color: var(--red); margin-top: 12px;">
+      Limited Edition · only 95 treats total · once they're gone, they're gone!
+    </p>
+  </div>
+</section>
+
+<section id="orders">
+  <div class="section-label reveal">~ custom orders ~</div>
+  <h2 class="section-title reveal">Want me to bake <em>something</em>?</h2>
+
+  <p class="orders-intro reveal">
+    Birthday cake? Bread for the week? Brownies for a party? Just ask. I bake the whole menu below — and probably more.
+  </p>
+
+  <div class="orders-grid">
+    <div class="orders-col reveal reveal-delay-1">
+      <h3>🍞 Breads</h3>
+      <ul>
+        <li>Japanese Milk Bread</li>
+        <li>Banana Bread</li>
+        <li>Burger Buns</li>
+        <li>Subway-style Sandwich Bread</li>
+        <li>Bruschetta Bread</li>
+      </ul>
+    </div>
+    <div class="orders-col reveal reveal-delay-2">
+      <h3>🍰 Sweets</h3>
+      <ul>
+        <li>Lotus Biscoff Cheesecake</li>
+        <li>Chocolate Brownies</li>
+        <li>Choco Chunk Cookies</li>
+        <li>Cakes (custom flavours)</li>
+        <li>Strawberry Tarts</li>
+      </ul>
+    </div>
+    <div class="orders-col reveal reveal-delay-3">
+      <h3>🍔 Savoury</h3>
+      <ul>
+        <li>Homemade Pizza</li>
+        <li>Burgers (with my McDonald's-style sauce)</li>
+      </ul>
+    </div>
+    <div class="orders-col reveal reveal-delay-4">
+      <h3>🍋 Sips</h3>
+      <ul>
+        <li>Hibiscus Lemonade (real flowers!)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="weekend-note reveal">
+    <strong>WEEKENDS ONLY</strong><br>
+    Place orders by Thursday for the weekend
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="section-label reveal">~ get in touch ~</div>
+  <h2 class="section-title reveal">Let's <em>bake</em> something</h2>
+
+  <p class="contact-intro reveal">
+    Whether you want to place an order, hear about my next pop-up, or just say hi — I'd love to hear from you.
+  </p>
+
+  <div class="contact-buttons reveal">
+    <a href="https://wa.me/919883630776" class="contact-btn" target="_blank" rel="noopener">
+      💬 WhatsApp Me
+    </a>
+    <a href="https://forms.gle/iSzC12zMZgZvVGDy8" class="contact-btn secondary" target="_blank" rel="noopener">
+      ✨ Sign Up for Updates
+    </a>
+  </div>
+
+  <div class="phone-line reveal">
+    or call: <a href="tel:+919883630776">+91 98836 30776</a>
+  </div>
+
+  <div id="qr-placeholder" class="reveal">
+    <div class="qr-icon">⬛</div>
+    <span>QR Code<br>coming soon</span>
+  </div>
+
+  <p class="reveal" style="margin-top: 40px; font-family: 'Caveat', cursive; font-size: 24px; color: var(--gold);">
+    Thank you for being part of this journey 💛
+  </p>
+</section>
+
+<footer>
+  © Lucky Bakes · made with <span class="heart">♥</span> in Bengaluru · Lucky, age 11
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  // Lightbox
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Mobile nav close on link click
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+
+  // Scroll reveal with IntersectionObserver
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
