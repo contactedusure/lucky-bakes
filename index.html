@@ -560,27 +560,35 @@ section {
   border-bottom: 1px dashed var(--gold);
 }
 
-/* === QR PLACEHOLDER === */
-#qr-placeholder {
-  margin: 48px auto 0;
-  width: 160px;
-  height: 160px;
-  border: 2px dashed rgba(201, 169, 97, 0.5);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 8px;
-  color: rgba(201, 169, 97, 0.6);
-  font-family: 'Caveat', cursive;
-  font-size: 18px;
+/* === EVENT RECAP === */
+.recap-story {
+  max-width: 680px;
+  margin: 0 auto 60px;
   text-align: center;
-  padding: 16px;
 }
-#qr-placeholder .qr-icon {
-  font-size: 40px;
-  opacity: 0.5;
+.recap-story p {
+  font-size: 20px;
+  line-height: 1.75;
+  color: var(--brown);
+  margin-bottom: 18px;
+}
+.recap-story p:first-child::first-letter {
+  font-family: 'DM Serif Display', serif;
+  font-size: 64px;
+  float: left;
+  line-height: 1;
+  color: var(--gold-warm);
+  padding-right: 8px;
+  padding-top: 4px;
+}
+.recap-story strong { color: var(--gold-warm); font-weight: 600; }
+.recap-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.recap-gallery .gallery-item .label {
+  font-size: 18px;
 }
 
 /* === FOOTER === */
@@ -671,6 +679,7 @@ footer .heart { color: var(--red); }
     <a href="#story">My Story</a>
     <a href="#different">What's Different</a>
     <a href="#gallery">My Bakes</a>
+    <a href="#event-recap">The Event</a>
     <a href="#orders">Order</a>
     <a href="#contact" class="cta">Get in Touch</a>
   </div>
@@ -808,11 +817,11 @@ footer .heart { color: var(--red); }
 
 <section class="event-section" id="event">
   <div class="event-card reveal">
-    <div class="event-badge">UPCOMING POP-UP</div>
-    <h2>Catch me at the<br>CSE × Merchants of Happiness<br>Community Day</h2>
-    <div class="when">Saturday, 16 May 2026 · 3 PM – 7 PM</div>
-    <div class="where">Padukone–Dravid Centre for Sports Excellence, Bengaluru</div>
+    <div class="event-badge" style="background: var(--gold-warm);">MAY 16 · IT HAPPENED ✦</div>
+    <h2>Thank you,<br>CSE × Merchants of Happiness</h2>
+    <div class="when">Saturday, 16 May 2026 · Padukone–Dravid Centre for Sports Excellence, Bengaluru</div>
 
+    <p style="font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--brown-soft); font-style: italic; margin-bottom: 20px;">What Lucky served:</p>
     <div class="menu-quick">
       <span>🍰 Biscoff Cheesecake <span class="price">₹249</span></span>
       <span>🍫 Brownie <span class="price">₹99</span></span>
@@ -820,9 +829,55 @@ footer .heart { color: var(--red); }
       <span>🍋 Hibiscus Lemonade <span class="price">₹50</span></span>
     </div>
 
-    <p style="font-family: 'Caveat', cursive; font-size: 24px; color: var(--red); margin-top: 12px;">
-      Limited Edition · only 95 treats total · once they're gone, they're gone!
+    <p style="font-family: 'Caveat', cursive; font-size: 28px; color: var(--gold-warm); margin-top: 16px;">
+      95 treats. Sold out. 🎉
     </p>
+  </div>
+</section>
+
+<section id="event-recap" style="background: linear-gradient(180deg, transparent 0%, rgba(240,227,204,0.35) 50%, transparent 100%); max-width: none; padding: 100px 24px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-label reveal">~ the day it happened ~</div>
+    <h2 class="section-title reveal">Lucky's First <em>Big Stall</em></h2>
+
+    <div class="recap-story reveal">
+      <p>
+        On 16 May, I set up my stall at the <strong>Padukone–Dravid Centre for Sports Excellence</strong> for the CSE × Merchants of Happiness Community Day. It was the biggest crowd I'd ever baked for.
+      </p>
+      <p>
+        I spent the whole week before baking, prepping, and making sure every single thing was from scratch — the Biscoff spread, the cream cheese, the hibiscus lemonade with real flowers. Everything.
+      </p>
+      <p>
+        <strong>All 95 treats sold out.</strong> I couldn't believe it. Thank you to everyone who stopped by, tried my food, and believed in Lucky Bakes. This is just the beginning. 🧡
+      </p>
+    </div>
+
+    <div class="recap-gallery">
+      <div class="gallery-item reveal reveal-delay-1" onclick="openLightbox('photos/event-01.jpg')">
+        <img src="photos/event-01.jpg" alt="Lucky at his stall">
+        <div class="label">At the stall</div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2" onclick="openLightbox('photos/event-02.jpg')">
+        <img src="photos/event-02.jpg" alt="The bakes on display">
+        <div class="label">The spread</div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-3" onclick="openLightbox('photos/event-03.jpg')">
+        <img src="photos/event-03.jpg" alt="The crowd">
+        <div class="label">The crowd</div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-4" onclick="openLightbox('photos/event-04.jpg')">
+        <img src="photos/event-04.jpg" alt="Behind the scenes">
+        <div class="label">Behind the scenes</div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1" onclick="openLightbox('photos/event-05.jpg')">
+        <img src="photos/event-05.jpg" alt="Happy customers">
+        <div class="label">Happy customers</div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2" onclick="openLightbox('photos/event-06.jpg')">
+        <img src="photos/event-06.jpg" alt="Sold out!">
+        <div class="label">Sold out! 🎉</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -895,11 +950,6 @@ footer .heart { color: var(--red); }
 
   <div class="phone-line reveal">
     or call: <a href="tel:+919883630776">+91 98836 30776</a>
-  </div>
-
-  <div id="qr-placeholder" class="reveal">
-    <div class="qr-icon">⬛</div>
-    <span>QR Code<br>coming soon</span>
   </div>
 
   <p class="reveal" style="margin-top: 40px; font-family: 'Caveat', cursive; font-size: 24px; color: var(--gold);">
