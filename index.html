@@ -591,6 +591,128 @@ section {
   font-size: 18px;
 }
 
+/* === UPCOMING EVENT BANNER === */
+.upcoming-banner {
+  background: linear-gradient(135deg, var(--brown) 0%, #4a2e1a 100%);
+  color: var(--cream);
+  max-width: none;
+  padding: 70px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.upcoming-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 140%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(201, 169, 97, 0.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+.upcoming-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.upcoming-badge {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  padding: 8px 22px;
+  border-radius: 24px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  letter-spacing: 3px;
+  margin-bottom: 24px;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.upcoming-inner h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 5vw, 52px);
+  color: var(--cream);
+  margin-bottom: 10px;
+  line-height: 1.15;
+}
+.upcoming-inner h2 em { color: var(--gold); font-style: italic; }
+.upcoming-date {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(28px, 4vw, 38px);
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.upcoming-location {
+  font-style: italic;
+  font-size: 20px;
+  color: rgba(250, 243, 231, 0.8);
+  margin-bottom: 30px;
+}
+.upcoming-copy {
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--cream);
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+.upcoming-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  margin-bottom: 36px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--cream);
+}
+.upcoming-menu span {
+  white-space: nowrap;
+  background: rgba(255,255,255,0.08);
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(201, 169, 97, 0.3);
+}
+.upcoming-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.upcoming-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 28px;
+  background: var(--gold);
+  color: var(--brown);
+  text-decoration: none;
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  border-radius: 28px;
+  letter-spacing: 1px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 18px -4px rgba(0, 0, 0, 0.35);
+}
+.upcoming-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.45);
+}
+.upcoming-btn.secondary-link {
+  background: transparent;
+  color: var(--gold);
+  border: 2px solid rgba(201, 169, 97, 0.5);
+  box-shadow: none;
+}
+.upcoming-btn.secondary-link:hover {
+  background: rgba(201, 169, 97, 0.15);
+}
+
 /* === FOOTER === */
 footer {
   text-align: center;
@@ -710,6 +832,39 @@ footer .heart { color: var(--red); }
   </div>
 </section>
 
+<section class="upcoming-banner" id="upcoming">
+  <div class="upcoming-inner">
+    <div class="upcoming-badge reveal">TOMORROW!</div>
+    <h2 class="reveal">Lucky's next pop-up is<br><em>tomorrow</em> ✨</h2>
+    <div class="upcoming-date reveal">Saturday, 20th June · 9 AM – 1 PM</div>
+    <div class="upcoming-location reveal">Panchavati, Malleswaram, Bengaluru</div>
+
+    <p class="upcoming-copy reveal">
+      Come find me at <strong style="color: var(--gold);">The Merchants of Happiness — A Summer of 100 Stories</strong>. A beautiful community event under the trees — kid-run pop-up stalls, storytelling, eco-heritage walks, and more. I'll be there with my full Lucky Bakes stall!
+    </p>
+
+    <div class="upcoming-menu reveal">
+      <span>🍰 Biscoff Cheesecake</span>
+      <span>🍫 Chocolate Brownies</span>
+      <span>🍪 Choco Chunk Cookies</span>
+      <span>🍋 Hibiscus Lemonade</span>
+    </div>
+
+    <p class="reveal" style="font-family: 'Caveat', cursive; font-size: 22px; color: var(--gold); margin-bottom: 28px;">
+      Everything from scratch, as always. See you there! 🧡
+    </p>
+
+    <div class="upcoming-buttons reveal">
+      <a href="https://urbanaut.app/about-themerchantsofhappiness" class="upcoming-btn" target="_blank" rel="noopener">
+        🎟 Get Tickets · ₹99
+      </a>
+      <a href="https://www.instagram.com/the_merchants_of_happiness/" class="upcoming-btn secondary-link" target="_blank" rel="noopener">
+        📸 Event Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="story" id="story">
   <div class="story-inner">
     <div class="section-label reveal">~ my story ~</div>
@@ -784,8 +939,8 @@ footer .heart { color: var(--red); }
       <img src="photos/lucky-biscoff-cheesecake-new.jpg" alt="Lotus Biscoff Cheesecake">
       <div class="label">Lotus Biscoff Cheesecake</div>
     </div>
-    <div class="gallery-item reveal reveal-delay-2" onclick="openLightbox('photos/lucky-brownies.jpg')">
-      <img src="photos/lucky-brownies.jpg" alt="Tray of chocolate brownies">
+    <div class="gallery-item reveal reveal-delay-2" onclick="openLightbox('photos/brownies-event-lucky-bakes.jpg')">
+      <img src="photos/brownies-event-lucky-bakes.jpg" alt="Fudgy chocolate brownies baked by Lakshyya — made from scratch for his pop-up stalls">
       <div class="label">Chocolate Brownies</div>
     </div>
     <div class="gallery-item reveal reveal-delay-3" onclick="openLightbox('photos/lucky-bread.jpg')">
@@ -796,8 +951,8 @@ footer .heart { color: var(--red); }
       <img src="photos/brioche-bread-lucky-bakes.jpg" alt="Fresh golden brioche bread baked by Lakshyya for Lucky Bakes">
       <div class="label">Fresh Brioche Bread</div>
     </div>
-    <div class="gallery-item reveal reveal-delay-4" onclick="openLightbox('photos/lucky-burger-buns.jpg')">
-      <img src="photos/lucky-burger-buns.jpg" alt="Tray of sesame burger buns">
+    <div class="gallery-item reveal reveal-delay-4" onclick="openLightbox('photos/burger-buns-lucky-bakes.jpg')">
+      <img src="photos/burger-buns-lucky-bakes.jpg" alt="Soft, golden burger buns baked fresh by Lakshyya for Lucky Bakes">
       <div class="label">Burger Buns</div>
     </div>
     <div class="gallery-item reveal reveal-delay-1" onclick="openLightbox('photos/lucky-pizza.jpg')">
